@@ -1,17 +1,17 @@
 // Import Engine
 import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   getProductCardById,
-  createReviewForProductCard
+  createReviewForProductCard,
 } from "../../actions/productCard";
 import {
   addProductCardToMyBasket,
   removeProductCardToMyBasket,
   addProductCardToMyFavorites,
-  removeProductCardToMyFavorites
+  removeProductCardToMyFavorites,
 } from "../../actions/users";
 
 // Import Components
@@ -31,7 +31,7 @@ const ProductPage = ({
   addProductCardToMyFavorites,
   removeProductCardToMyFavorites,
   productCard: { product },
-  userWork: { isAuthenticated, user }
+  userWork: { isAuthenticated, user },
 }) => {
   const { id } = useParams();
 
@@ -78,7 +78,7 @@ const ProductPage = ({
                 )}
               </div>
               <div className="list-review__section">
-                {product?.reviews?.length > 0 ? (
+                {product.reviews.length > 0 ? (
                   product.reviews.map((review) => (
                     <ReviewItem key={review._id} review={review} />
                   ))
@@ -102,12 +102,12 @@ ProductPage.propTypes = {
   addProductCardToMyFavorites: PropTypes.func.isRequired,
   removeProductCardToMyFavorites: PropTypes.func.isRequired,
   productCard: PropTypes.object.isRequired,
-  userWork: PropTypes.object.isRequired
+  userWork: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   productCard: state.productCard,
-  userWork: state.userWork
+  userWork: state.userWork,
 });
 
 export default connect(mapStateToProps, {
@@ -116,5 +116,5 @@ export default connect(mapStateToProps, {
   addProductCardToMyBasket,
   removeProductCardToMyBasket,
   addProductCardToMyFavorites,
-  removeProductCardToMyFavorites
+  removeProductCardToMyFavorites,
 })(ProductPage);

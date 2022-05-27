@@ -1,5 +1,5 @@
 // Import Engine
-import React, { createRef, Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { setAlert } from "../../../actions/alert";
@@ -19,21 +19,19 @@ const Registration = ({
   setAlert,
   registration,
   closeModal,
-  isAuthenticated
+  isAuthenticated,
 }) => {
   const hookForm = useForm({ mode: "all" });
   const {
     handleSubmit,
-    trigger,
-    setValue,
-    formState: { submitCount, touchedFields, errors, dirtyFields }
+    formState: { errors },
   } = hookForm;
   const reghook = (ref, options) => {
     return {
       ...hookForm.register(ref, options),
       maxLength:
         (options.maxLength && (options.maxLength.value || options.maxLength)) ||
-        -1
+        -1,
     };
   };
   /* console.log(watch("fullname")) */
@@ -47,7 +45,7 @@ const Registration = ({
     phoneNumber: "",
     address: "",
     password: "",
-    password2: ""
+    password2: "",
   });
 
   // const [iAmSeller, setiAmSeller] = useState(false);
@@ -55,23 +53,15 @@ const Registration = ({
   const [showPassword2, setShowPassword2] = useState(false);
   const [avatarForm, setAvatarForm] = useState();
 
-  const {
-    login,
-    fullName,
-    email,
-    phoneMask,
-    phoneNumber,
-    address,
-    password,
-    password2
-  } = formData;
+  const { login, fullName, email, phoneNumber, address, password, password2 } =
+    formData;
 
   const navigate = useNavigate();
 
   const onChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
     /* setValue(e.target.name, e.target.value);
     trigger(e.target.name);
@@ -112,7 +102,7 @@ const Registration = ({
             maxLength: { value: 10, message: "Должно быть 10 символов" },
             minLength: { value: 10, message: "Должно быть 10 символов" },
             pattern: /^[0-9]+$/i,
-            onChange: onChange
+            onChange: onChange,
           })}
           value={phoneNumber}
         />
@@ -155,7 +145,7 @@ const Registration = ({
                 minLength: 1,
                 pattern:
                   /.+/gi /* /^[a-z0-9\.\$\%\#\,\-\+\=\_\(\)\{\}\!\"\'\|\;\:\<\>]+@[a-z0-9]+\.[a-z0-9]+$/i */,
-                onChange: onChange
+                onChange: onChange,
               })}
               value={login}
               error={errors.login}
@@ -174,7 +164,7 @@ const Registration = ({
                 maxLength: { value: 30, message: "Length more than 30" },
                 minLength: 1,
                 pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
-                onChange: onChange
+                onChange: onChange,
               })} /* TODO: Сделать поддержку других языков  */
               value={fullName}
               error={errors.fullName}
@@ -194,8 +184,9 @@ const Registration = ({
                 maxLength: { value: 320, message: "Email greater than 320" },
                 minLength: 1,
                 pattern:
+                  // eslint-disable-next-line
                   /^[a-z0-9\.\$\%\#\,\-\+\=\_\(\)\{\}\!\"\'\|\;\:\<\>]+@[a-z0-9]+\.[a-z0-9]+$/i,
-                onChange: onChange
+                onChange: onChange,
               })}
               value={email}
               error={errors.email}
@@ -218,13 +209,14 @@ const Registration = ({
                 required: "Обязательное поле",
                 minLength: {
                   value: 6,
-                  message: "Пароль должен быть 6 символов"
+                  message: "Пароль должен быть 6 символов",
                 },
-                onChange: onChange
+                onChange: onChange,
               })}
               value={password}
             />
             <img
+              alt=""
               onClick={() => setShowPassword(!showPassword)}
               className="regShowPassword"
               src={showPasswordImage}
@@ -245,13 +237,14 @@ const Registration = ({
               {...reghook("password2", {
                 required: "Обязательное поле",
                 validate: {
-                  value: (value) => password == value || "Пароли не совпадают"
+                  value: (value) => password === value || "Пароли не совпадают",
                 },
-                onChange: onChange
+                onChange: onChange,
               })}
               value={password2}
             />
             <img
+              alt=""
               onClick={() => setShowPassword2(!showPassword2)}
               className="regShowPassword"
               src={showPasswordImage}
@@ -273,11 +266,11 @@ const Registration = ({
                 required: "Обязательное поле",
                 maxLength: {
                   value: 100,
-                  message: "Максимальное количество символов: 100"
+                  message: "Максимальное количество символов: 100",
                 },
                 minLength: 1,
                 pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
-                onChange: onChange
+                onChange: onChange,
               })} /* TODO: Сделать поддержку других языков  */
               value={address}
               error={errors.address}
@@ -306,6 +299,7 @@ const Registration = ({
           >
             Зарегистрироваться{" "}
             <img
+              alt=""
               className="next__arrow"
               src={NextArrow}
               width={20}
@@ -321,11 +315,11 @@ const Registration = ({
 Registration.propTypes = {
   setAlert: PropTypes.func.isRequired,
   registration: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.userWork.isAuthenticated
+  isAuthenticated: state.userWork.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { setAlert, registration })(

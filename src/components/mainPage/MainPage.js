@@ -8,7 +8,7 @@ import {
   addProductCardToMyBasket,
   addProductCardToMyFavorites,
   removeProductCardToMyBasket,
-  removeProductCardToMyFavorites
+  removeProductCardToMyFavorites,
 } from "../../actions/users";
 
 // Import Components
@@ -31,7 +31,7 @@ function MainPage({
   removeProductCardToMyBasket,
   removeProductCardToMyFavorites,
   productCard: { products, loading },
-  history
+  history,
 }) {
   const navigate = useNavigate();
 
@@ -60,7 +60,7 @@ function MainPage({
 
         <div className="top">
           <Link to="/">
-            <img src={ArrowImage} />
+            <img alt="" src={ArrowImage} />
           </Link>
         </div>
 
@@ -121,12 +121,12 @@ MainPage.propTypes = {
   removeProductCardToMyBasket: PropTypes.func.isRequired,
   removeProductCardToMyFavorites: PropTypes.func.isRequired,
   productCard: PropTypes.object.isRequired,
-  userWork: PropTypes.object.isRequired
+  userWork: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   productCard: state.productCard,
-  userWork: state.userWork
+  userWork: state.userWork,
 });
 
 export default connect(mapStateToProps, {
@@ -134,5 +134,5 @@ export default connect(mapStateToProps, {
   addProductCardToMyBasket,
   addProductCardToMyFavorites,
   removeProductCardToMyBasket,
-  removeProductCardToMyFavorites
+  removeProductCardToMyFavorites,
 })(MainPage);

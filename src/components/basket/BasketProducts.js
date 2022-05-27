@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 // Import Styles
 import "./Basket.css";
-import ZmeiImage from "../../img/1.png";
 import XoImage from "../../img/хо.png";
 import PlusImage from "../../img/+.png";
 import Spinner from "../layout/Spinner";
@@ -12,7 +11,7 @@ import Balaklava from "../../img/shapka3.png";
 import {
   AiOutlineCaretLeft,
   AiOutlineCaretRight,
-  AiFillCloseCircle
+  AiFillCloseCircle,
 } from "react-icons/ai";
 
 const BasketProducts = ({
@@ -24,7 +23,7 @@ const BasketProducts = ({
   removeProductCardToMyBasket,
   removeProductCardToMyFavorites,
   navigate,
-  loading
+  loading,
 }) => {
   console.log(basket);
   return (
@@ -49,11 +48,16 @@ const BasketProducts = ({
                       >
                         {basketProduct?.product?.photo?.url ? (
                           <img
+                            alt=""
                             className="img__product"
                             src={basketProduct?.product?.photo?.url}
                           />
                         ) : (
-                          <img className="img__product" src={Balaklava} />
+                          <img
+                            alt=""
+                            className="img__product"
+                            src={Balaklava}
+                          />
                         )}
                       </Link>
                     </div>
@@ -80,6 +84,7 @@ const BasketProducts = ({
                           >
                             {" "}
                             <img
+                              alt=""
                               className="close__favorite"
                               src={XoImage}
                             />{" "}
@@ -96,6 +101,7 @@ const BasketProducts = ({
                           >
                             {" "}
                             <img
+                              alt=""
                               className="close__favorite"
                               src={XoImage}
                             />{" "}
@@ -114,7 +120,7 @@ const BasketProducts = ({
                               );
                             }}
                           >
-                            <img src={PlusImage} />
+                            <img alt="" src={PlusImage} />
                           </button>
                         ) : (
                           <button

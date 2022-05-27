@@ -17,7 +17,7 @@ const Footer = () => {
         <div className="first-footer__section">
           <div className="footer__logo">
             <Link className="link__logo" to="/">
-              <img className="img__logo" src={MainLogo} />
+              <img alt="" className="img__logo" src={MainLogo} />
             </Link>
           </div>
           <div className="footer__links">
@@ -28,10 +28,10 @@ const Footer = () => {
         <div className="second-footer__section">
           <div className="footer__social">
             <Link to="wildeberries.com">
-              <img className="img__social" src={Wildeberries} />
+              <img alt="" className="img__social" src={Wildeberries} />
             </Link>
             <Link to="telegram.org">
-              <img className="img__social" src={Telegram} />
+              <img alt="" className="img__social" src={Telegram} />
             </Link>
           </div>
         </div>

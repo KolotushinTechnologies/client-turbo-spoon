@@ -1,12 +1,10 @@
 // Import Engine
 import React, { Fragment, useState, useEffect } from "react";
-import { findDOMNode } from "react-dom";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
 // Import Styles
 import "./ProductsPage.css";
-import ZmeiImage from "../../img/1.png";
 import XoImage from "../../img/хо.png";
 import PlusImage from "../../img/+.png";
 import Spinner from "../layout/Spinner";
@@ -24,7 +22,7 @@ const Products = ({
   getAllProductCards,
   navigate,
   loading,
-  setModalActive
+  setModalActive,
 }) => {
   const [countSlides, setCountSlides] = useState(3);
 
@@ -50,7 +48,7 @@ const Products = ({
     slidesToShow: countSlides,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000
+    autoplaySpeed: 2000,
   };
 
   return (
@@ -72,11 +70,16 @@ const Products = ({
                         >
                           {item?.photo?.url ? (
                             <img
+                              alt=""
                               className="img__product"
                               src={item?.photo?.url}
                             />
                           ) : (
-                            <img className="img__product" src={Balaklava} />
+                            <img
+                              alt=""
+                              className="img__product"
+                              src={Balaklava}
+                            />
                           )}
                         </Link>
                       </div>
@@ -111,6 +114,7 @@ const Products = ({
                                     >
                                       {" "}
                                       <img
+                                        alt=""
                                         className="img__favorites"
                                         src={XoImage}
                                       />{" "}
@@ -127,6 +131,7 @@ const Products = ({
                                     >
                                       {" "}
                                       <img
+                                        alt=""
                                         className="img__favorites"
                                         src={XoImage}
                                       />{" "}
@@ -152,6 +157,7 @@ const Products = ({
                                       }}
                                     >
                                       <img
+                                        alt=""
                                         className="add-to-basket"
                                         src={PlusImage}
                                       />
@@ -186,7 +192,7 @@ const Products = ({
                                     onClick={() => setModalActive(true)}
                                   >
                                     {" "}
-                                    <img src={XoImage} />{" "}
+                                    <img alt="" src={XoImage} />{" "}
                                   </button>
                                 </div>
                                 <div>
@@ -195,7 +201,7 @@ const Products = ({
                                     className="button-main-page"
                                     onClick={() => setModalActive(true)}
                                   >
-                                    <img src={PlusImage} />
+                                    <img alt="" src={PlusImage} />
                                   </button>
                                 </div>
                               </Fragment>

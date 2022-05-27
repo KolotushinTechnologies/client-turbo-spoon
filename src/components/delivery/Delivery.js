@@ -1,32 +1,10 @@
 // Import Engine
-import React, { useEffect } from "react";
-import { load } from "@2gis/mapgl";
+import React from "react";
 
 // Import Styles
 import "./Delivery.css";
 
-const MapWrapper = React.memo(
-  () => {
-    return <div id="map-container" style={{}}></div>;
-  },
-  () => true
-);
-
 const DeliveryPage = () => {
-  useEffect(() => {
-    let map;
-    load().then((mapglAPI) => {
-      map = new mapglAPI.Map("map-container", {
-        center: [55.31878, 25.23584],
-        zoom: 13,
-        key: "Your API access key"
-      });
-    });
-
-    // Удаляем карту при размонтировании компонента
-    return () => map && map.destroy();
-  }, []);
-
   return (
     <div className="main-delivery__section" id="page-wrap">
       <div className="first-section__delivery">

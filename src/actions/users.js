@@ -16,7 +16,6 @@ import {
   //
   GET_MY_BASKET,
   GET_MY_FAVORITES,
-  GET_MY_ORDERS
 } from "./types";
 
 // Get My User Profile (User will get him profile after login or registration)
@@ -29,11 +28,11 @@ export const getMyUserProfile = () => async (dispatch) => {
 
     dispatch({
       type: GET_MY_USER_PROFILE,
-      payload: res.data
+      payload: res.data,
     });
   } catch (err) {
     dispatch({
-      type: AUTH_ERROR
+      type: AUTH_ERROR,
     });
   }
 };
@@ -48,7 +47,7 @@ export const registration = (formData, navigate) => async (dispatch) => {
 
     dispatch({
       type: REGISTRATION_SUCCESS,
-      payload: res.data
+      payload: res.data,
     });
 
     dispatch(getMyUserProfile());
@@ -61,7 +60,7 @@ export const registration = (formData, navigate) => async (dispatch) => {
     }
 
     dispatch({
-      type: REGISTRATION_FAIL
+      type: REGISTRATION_FAIL,
     });
   }
 };
@@ -76,7 +75,7 @@ export const loginUser = (login, password, navigate) => async (dispatch) => {
 
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: res.data
+      payload: res.data,
     });
 
     dispatch(getMyUserProfile());
@@ -89,7 +88,7 @@ export const loginUser = (login, password, navigate) => async (dispatch) => {
     }
 
     dispatch({
-      type: LOGIN_FAIL
+      type: LOGIN_FAIL,
     });
   }
 };
@@ -107,7 +106,7 @@ export const updateMyProfile = (formData, navigate) => async (dispatch) => {
 
     dispatch({
       type: UPDATE_MY_PROFILE,
-      payload: res.data
+      payload: res.data,
     });
     dispatch(getMyUserProfile());
     dispatch(setAlert("Ваш Профиль Обновлен!", "success"));
@@ -121,7 +120,7 @@ export const updateMyProfile = (formData, navigate) => async (dispatch) => {
     }
 
     dispatch({
-      type: USER_ERROR
+      type: USER_ERROR,
     });
   }
 };
@@ -137,7 +136,7 @@ export const updateMyProfileAndUploadAvatar =
 
       dispatch({
         type: UPDATE_MY_PROFILE,
-        payload: res.data
+        payload: res.data,
       });
 
       dispatch(getMyUserProfile());
@@ -152,7 +151,7 @@ export const updateMyProfileAndUploadAvatar =
       }
 
       dispatch({
-        type: USER_ERROR
+        type: USER_ERROR,
       });
     }
   };
@@ -167,11 +166,11 @@ export const getMyBasket = () => async (dispatch) => {
 
     dispatch({
       type: GET_MY_BASKET,
-      payload: res.data
+      payload: res.data,
     });
   } catch (err) {
     dispatch({
-      type: USER_ERROR
+      type: USER_ERROR,
     });
   }
 };
@@ -189,7 +188,7 @@ export const addProductCardToMyBasket =
 
       dispatch({
         type: UPDATE_MY_PROFILE,
-        payload: res.data
+        payload: res.data,
       });
 
       dispatch(setAlert("Товар Был Добавлен Вам В Корзину!", "success"));
@@ -203,7 +202,7 @@ export const addProductCardToMyBasket =
       }
 
       dispatch({
-        type: USER_ERROR
+        type: USER_ERROR,
       });
     }
   };
@@ -221,7 +220,7 @@ export const removeProductCardToMyBasket =
 
       dispatch({
         type: UPDATE_MY_PROFILE,
-        payload: res.data
+        payload: res.data,
       });
 
       dispatch(setAlert("Товар Был Удален Из Вашей Корзины!", "success"));
@@ -235,7 +234,7 @@ export const removeProductCardToMyBasket =
       }
 
       dispatch({
-        type: USER_ERROR
+        type: USER_ERROR,
       });
     }
   };
@@ -249,12 +248,12 @@ export const createOrder =
     try {
       const res = await api.post("/users/create-order", {
         price,
-        methodDelivery
+        methodDelivery,
       });
 
       dispatch({
         type: UPDATE_MY_PROFILE,
-        payload: res.data
+        payload: res.data,
       });
 
       dispatch(setAlert("Ваш Заказ Успешно Оформлен!", "success"));
@@ -268,7 +267,7 @@ export const createOrder =
       }
 
       dispatch({
-        type: USER_ERROR
+        type: USER_ERROR,
       });
     }
   };
@@ -283,11 +282,11 @@ export const getMyFavorites = () => async (dispatch) => {
 
     dispatch({
       type: GET_MY_FAVORITES,
-      payload: res.data
+      payload: res.data,
     });
   } catch (err) {
     dispatch({
-      type: USER_ERROR
+      type: USER_ERROR,
     });
   }
 };
@@ -305,7 +304,7 @@ export const addProductCardToMyFavorites =
 
       dispatch({
         type: UPDATE_MY_PROFILE,
-        payload: res.data
+        payload: res.data,
       });
 
       dispatch(setAlert("Товар Был Добавлен Вам В Избранное!", "success"));
@@ -319,7 +318,7 @@ export const addProductCardToMyFavorites =
       }
 
       dispatch({
-        type: USER_ERROR
+        type: USER_ERROR,
       });
     }
   };
@@ -336,7 +335,7 @@ export const removeProductCardToMyFavorites =
 
       dispatch({
         type: UPDATE_MY_PROFILE,
-        payload: res.data
+        payload: res.data,
       });
 
       dispatch(setAlert("Товар Был Удален Из Вашего Избранного!", "success"));
@@ -350,7 +349,7 @@ export const removeProductCardToMyFavorites =
       }
 
       dispatch({
-        type: USER_ERROR
+        type: USER_ERROR,
       });
     }
   };

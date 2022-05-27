@@ -7,7 +7,6 @@ import Auth from "../auth/Auth";
 
 // Import Styles
 import "./ProductPage.css";
-import ZmeiImage from "../../img/1.png";
 import XoImage from "../../img/хо.png";
 import PlusImage from "../../img/+.png";
 import Balaklava from "../../img/shapka3.png";
@@ -25,7 +24,7 @@ const Product = ({
   modalActive,
   setModalActive,
   loginStatus,
-  setLoginStatus
+  setLoginStatus,
 }) => {
   console.log(product);
 
@@ -36,9 +35,13 @@ const Product = ({
           <div className="block__product">
             <Link className="link-avatar" to={`/product/${product._id}`}>
               {product?.photo?.url ? (
-                <img className="img__product" src={product?.photo?.url} />
+                <img
+                  alt=""
+                  className="img__product"
+                  src={product?.photo?.url}
+                />
               ) : (
-                <img className="img__product" src={Balaklava} />
+                <img alt="" className="img__product" src={Balaklava} />
               )}
             </Link>
           </div>
@@ -72,7 +75,7 @@ const Product = ({
                         }}
                       >
                         {" "}
-                        <img src={XoImage} />{" "}
+                        <img alt="" src={XoImage} />{" "}
                       </button>
                     ) : (
                       <button
@@ -82,7 +85,8 @@ const Product = ({
                         }}
                       >
                         {" "}
-                        <img src={XoImage} /> {/* Убрать из Избранного */}
+                        <img alt="" src={XoImage} />{" "}
+                        {/* Убрать из Избранного */}
                       </button>
                     )}
                   </div>
@@ -100,7 +104,7 @@ const Product = ({
                           addProductCardToMyBasket(product._id, navigate);
                         }}
                       >
-                        <img src={PlusImage} />
+                        <img alt="" src={PlusImage} />
                       </button>
                     ) : (
                       <button
@@ -125,7 +129,7 @@ const Product = ({
                       onClick={() => setModalActive(true)}
                     >
                       {" "}
-                      <img src={XoImage} />{" "}
+                      <img alt="" src={XoImage} />{" "}
                     </button>
                   </div>
                   <div>
@@ -134,7 +138,7 @@ const Product = ({
                       className="button-main-product"
                       onClick={() => setModalActive(true)}
                     >
-                      <img src={PlusImage} />
+                      <img alt="" src={PlusImage} />
                     </button>
                   </div>
                 </Fragment>

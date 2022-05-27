@@ -1,5 +1,5 @@
 // Import Engine
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -8,7 +8,7 @@ import {
   addProductCardToMyBasket,
   removeProductCardToMyBasket,
   addProductCardToMyFavorites,
-  removeProductCardToMyFavorites
+  removeProductCardToMyFavorites,
 } from "../../actions/users";
 
 // Import Components
@@ -24,7 +24,7 @@ const FavoritesPage = ({
   addProductCardToMyBasket,
   removeProductCardToMyBasket,
   addProductCardToMyFavorites,
-  removeProductCardToMyFavorites
+  removeProductCardToMyFavorites,
 }) => {
   const navigate = useNavigate();
 
@@ -65,11 +65,11 @@ FavoritesPage.propTypes = {
   removeProductCardToMyBasket: PropTypes.func.isRequired,
   addProductCardToMyFavorites: PropTypes.func.isRequired,
   removeProductCardToMyFavorites: PropTypes.func.isRequired,
-  userWork: PropTypes.object.isRequired
+  userWork: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  userWork: state.userWork
+  userWork: state.userWork,
 });
 
 export default connect(mapStateToProps, {
@@ -77,5 +77,5 @@ export default connect(mapStateToProps, {
   addProductCardToMyBasket,
   removeProductCardToMyBasket,
   addProductCardToMyFavorites,
-  removeProductCardToMyFavorites
+  removeProductCardToMyFavorites,
 })(FavoritesPage);

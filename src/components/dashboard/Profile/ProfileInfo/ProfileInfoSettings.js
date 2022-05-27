@@ -1,5 +1,5 @@
 // Import Engine
-import React, { useState, useEffect, Fragment, createRef } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import {
   getMyUserProfile,
   updateMyProfile,
-  updateMyProfileAndUploadAvatar
+  updateMyProfileAndUploadAvatar,
 } from "../../../../actions/users";
 
 // Import Styles
@@ -26,7 +26,7 @@ const initialState = {
   address: "",
   password: "",
   password2: "",
-  avatar: ""
+  avatar: "",
 };
 
 const ProfileInfoSettings = ({
@@ -38,7 +38,7 @@ const ProfileInfoSettings = ({
   logout,
   openProfileSettings,
   displayEditProfile,
-  closeSettings
+  closeSettings,
 }) => {
   const navigate = useNavigate();
 
@@ -49,15 +49,14 @@ const ProfileInfoSettings = ({
   const {
     register,
     handleSubmit,
-    trigger,
-    setValue,
     reset,
-    formState: { submitCount, touchedFields, errors, isDirty }
+    formState: { errors, isDirty },
   } = useForm({ mode: "all", defaultValues: formData });
 
   useEffect(() => {
     if (avatarForm.getValues("avatar").length > 0)
       avatarForm.handleSubmit(onSubmitFile)();
+    // eslint-disable-next-line
   }, [avatarForm.watch("avatar")]);
 
   useEffect(() => {
@@ -71,6 +70,7 @@ const ProfileInfoSettings = ({
       setFormData(userData);
       reset(userData);
     }
+    // eslint-disable-next-line
   }, [loading, getMyUserProfile, user]);
 
   const { login, fullName, email, phoneNumber, address, password, avatar } =
@@ -111,9 +111,9 @@ const ProfileInfoSettings = ({
         <div className="editExitButtonsDiv">
           <button onClick={openProfileSettings} className="editButton">
             {displayEditProfile ? (
-              <img className="edit-page-button" src={EditPage} />
+              <img alt="" className="edit-page-button" src={EditPage} />
             ) : (
-              <img className="edit-page-button" src={EditPage} />
+              <img alt="" className="edit-page-button" src={EditPage} />
             )}
           </button>
           {/* <button onClick={logout} className="exitButton">
@@ -134,7 +134,7 @@ const ProfileInfoSettings = ({
           {avatarIsLoading ? (
             <Spinner />
           ) : avatar && avatar?.url ? (
-            <img className="profileImage" src={avatar?.url} alt="Нет Фото" />
+            <img className="profileImage" src={avatar?.url} alt="" />
           ) : (
             <img className="profileImage" src={DefaultAvatar} alt="Нет Фото" />
           )}
@@ -145,12 +145,12 @@ const ProfileInfoSettings = ({
               required: true,
               validate: {
                 fileType: (files) =>
-                  files[0]?.type == "image/jpeg" ||
-                  files[0]?.type == "image/png" ||
+                  files[0]?.type === "image/jpeg" ||
+                  files[0]?.type === "image/png" ||
                   "Image type can be only PNG and JPEG",
                 fileSize: (files) =>
-                  files[0]?.size / 1024 / 1024 <= 10 || "Image size > 10mb"
-              }
+                  files[0]?.size / 1024 / 1024 <= 10 || "Image size > 10mb",
+              },
             })}
             accept="image/jpeg,image/png"
           />
@@ -178,11 +178,11 @@ const ProfileInfoSettings = ({
                   required: "Empty field",
                   maxLength: {
                     value: 30,
-                    message: "Максимальное количество символов: 30"
+                    message: "Максимальное количество символов: 30",
                   },
                   minLength: 1,
                   pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
-                  onChange: onChange
+                  onChange: onChange,
                 })}
                 value={fullName}
                 errorstyle={{ marginTop: "-24px", marginLeft: "-6px" }}
@@ -215,11 +215,11 @@ const ProfileInfoSettings = ({
                 required: "Empty field",
                 maxLength: {
                   value: 30,
-                  message: "Максимальное количество символов: 30"
+                  message: "Максимальное количество символов: 30",
                 },
                 minLength: 1,
                 pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
-                onChange: onChange
+                onChange: onChange,
               })}
               value={login}
               errorstyle={{ marginTop: "-24px", marginLeft: "-6px" }}
@@ -247,12 +247,13 @@ const ProfileInfoSettings = ({
                   required: "Empty field",
                   maxLength: {
                     value: 320,
-                    message: "Максимальное количество символов у Email: 320"
+                    message: "Максимальное количество символов у Email: 320",
                   },
                   minLength: 1,
                   pattern:
+                    // eslint-disable-next-line
                     /^[a-z0-9\.\$\%\#\,\-\+\=\_\(\)\{\}\!\"\'\|\;\:\<\>]+@[a-z0-9]+\.[a-z0-9]+$/i,
-                  onChange: onChange
+                  onChange: onChange,
                 })}
                 value={email}
                 error={errors.email}
@@ -285,14 +286,14 @@ const ProfileInfoSettings = ({
                   required: "Empty field",
                   maxLength: {
                     value: 12,
-                    message: "Количество символов должно быть 12"
+                    message: "Количество символов должно быть 12",
                   },
                   minLength: {
                     value: 12,
-                    message: "Количество символов должно быть 12"
+                    message: "Количество символов должно быть 12",
                   },
                   pattern: /^\+[0-9]+$/i,
-                  onChange: onChange
+                  onChange: onChange,
                 })}
                 value={phoneNumber}
                 error={errors.phoneNumber}
@@ -308,14 +309,14 @@ const ProfileInfoSettings = ({
                   required: "Empty field",
                   maxLength: {
                     value: 12,
-                    message: "Количество символов должно быть 12"
+                    message: "Количество символов должно быть 12",
                   },
                   minLength: {
                     value: 12,
-                    message: "Количество символов должно быть 12"
+                    message: "Количество символов должно быть 12",
                   },
                   pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
-                  onChange: onChange
+                  onChange: onChange,
                 })}
                 value={address}
                 error={errors.address}
@@ -328,7 +329,7 @@ const ProfileInfoSettings = ({
                 placeholder="Пароль"
                 aria-invalid={!!errors.password + ""}
                 {...register("password", {
-                  onChange: onChange
+                  onChange: onChange,
                 })}
                 value={password}
                 error={errors.password}
@@ -361,15 +362,15 @@ ProfileInfoSettings.propTypes = {
   userWork: PropTypes.object.isRequired,
   updateMyProfile: PropTypes.func.isRequired,
   updateMyProfileAndUploadAvatar: PropTypes.func.isRequired,
-  getMyUserProfile: PropTypes.func.isRequired
+  getMyUserProfile: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  userWork: state.userWork
+  userWork: state.userWork,
 });
 
 export default connect(mapStateToProps, {
   updateMyProfile,
   getMyUserProfile,
-  updateMyProfileAndUploadAvatar
+  updateMyProfileAndUploadAvatar,
 })(ProfileInfoSettings);

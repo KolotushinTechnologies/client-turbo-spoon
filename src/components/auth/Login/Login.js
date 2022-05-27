@@ -1,6 +1,6 @@
 // Import Engine
 import React, { Fragment, useState } from "react";
-import { Link, Redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { loginUser } from "../../../actions/users";
@@ -17,20 +17,20 @@ const Login = ({ loginUser, closeModal, isAuthenticated }) => {
     handleSubmit,
     trigger,
     setValue,
-    formState: { errors }
+    formState: { errors },
   } = hookForm;
   const reghook = (ref, options) => {
     return {
       ...hookForm.register(ref, options),
       maxLength:
         (options.maxLength && (options.maxLength.value || options.maxLength)) ||
-        -1
+        -1,
     };
   };
 
   const [formData, setFormData] = useState({
     login: "",
-    password: ""
+    password: "",
   });
 
   const { login, password } = formData;
@@ -73,7 +73,8 @@ const Login = ({ loginUser, closeModal, isAuthenticated }) => {
               maxLength: 320,
               minLength: 1,
               pattern:
-                /^[a-z0-9\.\$\%\#\,\-\+\=\_\(\)\{\}\!\"\'\|\;\:\<\>]+@[a-z0-9]+\.[a-z0-9]+$|^[a-z0-9]+$/i
+                // eslint-disable-next-line
+                /^[a-z0-9\.\$\%\#\,\-\+\=\_\(\)\{\}\!\"\'\|\;\:\<\>]+@[a-z0-9]+\.[a-z0-9]+$|^[a-z0-9]+$/i,
             })}
             value={login}
             onChange={onChange}
@@ -103,6 +104,7 @@ const Login = ({ loginUser, closeModal, isAuthenticated }) => {
           >
             Вход
             <img
+              alt=""
               className="next__arrow"
               src={NextArrow}
               width={20}
@@ -117,11 +119,11 @@ const Login = ({ loginUser, closeModal, isAuthenticated }) => {
 
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.userWork.isAuthenticated
+  isAuthenticated: state.userWork.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { loginUser })(Login);

@@ -5,7 +5,6 @@ import Slider from "react-slick";
 
 // Import Styles
 import "./FavoritesMyProfile.css";
-import ZmeiImage from "../../img/1.png";
 import XoImage from "../../img/хо.png";
 import PlusImage from "../../img/+.png";
 import Spinner from "../layout/Spinner";
@@ -20,7 +19,7 @@ const FavoritesMyProfile = ({
   removeProductCardToMyBasket,
   removeProductCardToMyFavorites,
   navigate,
-  loading
+  loading,
 }) => {
   const [countSlides, setCountSlides] = useState(2);
 
@@ -46,7 +45,7 @@ const FavoritesMyProfile = ({
     slidesToShow: countSlides,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000
+    autoplaySpeed: 2000,
   };
 
   return (
@@ -72,11 +71,16 @@ const FavoritesMyProfile = ({
                         >
                           {favoriteProduct?.product?.photo?.url ? (
                             <img
+                              alt=""
                               className="img__product"
                               src={favoriteProduct?.product?.photo?.url}
                             />
                           ) : (
-                            <img className="img__product" src={Balaklava} />
+                            <img
+                              alt=""
+                              className="img__product"
+                              src={Balaklava}
+                            />
                           )}
                         </Link>
                       </div>
@@ -110,7 +114,7 @@ const FavoritesMyProfile = ({
                                     }}
                                   >
                                     {" "}
-                                    <img src={XoImage} />{" "}
+                                    <img alt="" src={XoImage} />{" "}
                                   </button>
                                 ) : (
                                   <button
@@ -124,6 +128,7 @@ const FavoritesMyProfile = ({
                                   >
                                     {" "}
                                     <img
+                                      alt=""
                                       className="img__favorites"
                                       src={XoImage}
                                     />{" "}
@@ -151,7 +156,7 @@ const FavoritesMyProfile = ({
                                       // }
                                     }}
                                   >
-                                    <img src={PlusImage} />
+                                    <img alt="" src={PlusImage} />
                                   </button>
                                 ) : (
                                   <button
@@ -195,11 +200,16 @@ const FavoritesMyProfile = ({
                       >
                         {favoriteProduct?.product?.photo?.url ? (
                           <img
+                            alt=""
                             className="img__product"
                             src={favoriteProduct?.product?.photo?.url}
                           />
                         ) : (
-                          <img className="img__product" src={Balaklava} />
+                          <img
+                            alt=""
+                            className="img__product"
+                            src={Balaklava}
+                          />
                         )}
                       </Link>
                     </div>
@@ -229,6 +239,7 @@ const FavoritesMyProfile = ({
                           >
                             {" "}
                             <img
+                              alt=""
                               className="close__favorite"
                               src={XoImage}
                             />{" "}
@@ -245,6 +256,7 @@ const FavoritesMyProfile = ({
                           >
                             {" "}
                             <img
+                              alt=""
                               className="close__favorite"
                               src={XoImage}
                             />{" "}
@@ -264,7 +276,7 @@ const FavoritesMyProfile = ({
                               );
                             }}
                           >
-                            <img src={PlusImage} />
+                            <img alt="" src={PlusImage} />
                           </button>
                         ) : (
                           <button

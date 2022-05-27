@@ -1,5 +1,5 @@
 // Import Engine
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 
 // Import Components
 import Registration from "./Registration/Registration";
@@ -25,6 +25,7 @@ const Auth = ({ modalActive, setModalActive, loginStatus, setLoginStatus }) => {
               <div>
                 Войдите
                 <img
+                  alt=""
                   className="next__arrow"
                   src={NextArrow}
                   width={20}
@@ -45,6 +46,7 @@ const Auth = ({ modalActive, setModalActive, loginStatus, setLoginStatus }) => {
                   <div>
                     Войдите
                     <img
+                      alt=""
                       className="next__arrow"
                       src={NextArrow}
                       width={20}
@@ -64,6 +66,7 @@ const Auth = ({ modalActive, setModalActive, loginStatus, setLoginStatus }) => {
             >
               Зарегистрируйтесь
               <img
+                alt=""
                 className="next__arrow"
                 src={NextArrow}
                 width={20}
@@ -79,6 +82,7 @@ const Auth = ({ modalActive, setModalActive, loginStatus, setLoginStatus }) => {
                 >
                   Зарегистрируйтесь
                   <img
+                    alt=""
                     className="next__arrow"
                     src={NextArrow}
                     width={20}

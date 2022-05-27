@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import Auth from "../../auth/Auth";
 
 // Import Styles
-import MainLogo from "../../../img/MainLogo.png";
 import FavoriteImage from "../../../img/FavoriteHeart.png";
 import BasketImage from "../../../img/Basket.png";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -19,7 +18,7 @@ const Menu = ({
   setModalActive,
   setLoginStatus,
   loginStatus,
-  isAuthenticated
+  isAuthenticated,
 }) => {
   return (
     <div className={menuActive ? "menu__burger menu__active" : "menu__burger"}>
@@ -107,7 +106,7 @@ const Menu = ({
                     setMenuActive(false);
                   }}
                 >
-                  <img src={FavoriteImage} width={"40"} height={"40"} />
+                  <img alt="" src={FavoriteImage} width={"40"} height={"40"} />
                 </Link>
               </li>
               <li className="menu__item2 button_item-basket">
@@ -118,7 +117,7 @@ const Menu = ({
                     setMenuActive(false);
                   }}
                 >
-                  <img src={BasketImage} width={"40"} height={"40"} />
+                  <img alt="" src={BasketImage} width={"40"} height={"40"} />
                 </Link>
               </li>
             </>
@@ -132,7 +131,7 @@ const Menu = ({
                     setMenuActive(false);
                   }}
                 >
-                  <img src={FavoriteImage} width={"40"} height={"40"} />
+                  <img alt="" src={FavoriteImage} width={"40"} height={"40"} />
                 </button>
               </li>
               <li className="menu__item2">
@@ -143,7 +142,7 @@ const Menu = ({
                     setMenuActive(false);
                   }}
                 >
-                  <img src={BasketImage} width={"40"} height={"40"} />
+                  <img alt="" src={BasketImage} width={"40"} height={"40"} />
                 </button>
               </li>
             </>

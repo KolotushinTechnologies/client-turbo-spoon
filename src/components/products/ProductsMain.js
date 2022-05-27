@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 // Import Styles
 import "./ProductsMain.css";
-import ZmeiImage from "../../img/1.png";
 import XoImage from "../../img/хо.png";
 import PlusImage from "../../img/+.png";
 import Spinner from "../layout/Spinner";
@@ -22,7 +21,7 @@ const ProductsMain = ({
   removeProductCardToMyFavorites,
   navigate,
   loading,
-  setModalActive
+  setModalActive,
 }) => {
   console.log(products);
 
@@ -43,9 +42,13 @@ const ProductsMain = ({
                       to={`/product/${item._id}`}
                     >
                       {item?.photo?.url ? (
-                        <img className="img__product" src={item?.photo?.url} />
+                        <img
+                          alt=""
+                          className="img__product"
+                          src={item?.photo?.url}
+                        />
                       ) : (
-                        <img className="img__product" src={Balaklava} />
+                        <img alt="" className="img__product" src={Balaklava} />
                       )}
                     </Link>
                   </div>
@@ -80,6 +83,7 @@ const ProductsMain = ({
                                 >
                                   {" "}
                                   <img
+                                    alt=""
                                     className="img__favorites"
                                     src={XoImage}
                                   />{" "}
@@ -96,6 +100,7 @@ const ProductsMain = ({
                                 >
                                   {" "}
                                   <img
+                                    alt=""
                                     className="img__favorites"
                                     src={XoImage}
                                   />{" "}
@@ -120,6 +125,7 @@ const ProductsMain = ({
                                   }}
                                 >
                                   <img
+                                    alt=""
                                     className="add-to-basket"
                                     src={PlusImage}
                                   />
@@ -150,7 +156,7 @@ const ProductsMain = ({
                                 onClick={() => setModalActive(true)}
                               >
                                 {" "}
-                                <img src={XoImage} />{" "}
+                                <img alt="" src={XoImage} />{" "}
                               </button>
                             </div>
                             <div>
@@ -159,7 +165,7 @@ const ProductsMain = ({
                                 className="button-main-page"
                                 onClick={() => setModalActive(true)}
                               >
-                                <img src={PlusImage} />
+                                <img alt="" src={PlusImage} />
                               </button>
                             </div>
                           </Fragment>

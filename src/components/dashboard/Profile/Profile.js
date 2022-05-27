@@ -1,6 +1,4 @@
-import React, { useState, Fragment, useEffect } from "react";
-import PropTypes from "prop-types";
-import { connect, useDispatch } from "react-redux";
+import React, { useState, Fragment } from "react";
 
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import ProfileInfoSettings from "./ProfileInfo/ProfileInfoSettings";
@@ -15,22 +13,13 @@ const Profile = ({
   phoneNumber,
   user,
   address,
-  logout
+  logout,
 }) => {
   const [mobileInfoHidden, setMobileInfoHidden] = useState(false);
 
   const [displayEditProfile, toggleEditProfile] = useState(false);
 
   const openProfileSettings = () => toggleEditProfile(!displayEditProfile);
-
-  const [displayEditCompanyInfo, toggleEditCompanyInfo] = useState(false);
-
-  const openCompanySettings = () =>
-    toggleEditCompanyInfo(!displayEditCompanyInfo);
-
-  const [displayEditWhatMake, toggleEditWhatMake] = useState(false);
-
-  const openWhatMakeSettings = () => toggleEditWhatMake(!displayEditWhatMake);
 
   const editProfile = (
     <ProfileInfoSettings

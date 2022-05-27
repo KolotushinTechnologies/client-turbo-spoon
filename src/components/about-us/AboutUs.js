@@ -29,7 +29,12 @@ const AboutUsPage = () => {
           </p>
         </div>
         <div className="img__about">
-          <img className="main-image-vasilisk" src={Vasilisk} width={250} />
+          <img
+            className="main-image-vasilisk"
+            alt=""
+            src={Vasilisk}
+            width={250}
+          />
         </div>
       </div>
       <div className="second-section__about-us">
@@ -39,10 +44,10 @@ const AboutUsPage = () => {
         </div>
         <div className="media__about">
           <Link to="wildeberries.com">
-            <img src={Wildeberries} width={50} />
+            <img alt="" src={Wildeberries} width={50} />
           </Link>
           <Link to="telegram.org">
-            <img src={Telegram} width={50} />
+            <img alt="" src={Telegram} width={50} />
           </Link>
         </div>
       </div>

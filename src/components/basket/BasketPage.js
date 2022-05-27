@@ -1,6 +1,5 @@
 // Import Engine
 import React, { Fragment, useEffect, useState } from "react";
-import { findDOMNode } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -9,7 +8,7 @@ import {
   removeProductCardToMyBasket,
   addProductCardToMyFavorites,
   removeProductCardToMyFavorites,
-  createOrder
+  createOrder,
 } from "../../actions/users";
 // import $ from ""
 
@@ -27,7 +26,7 @@ const Basketpage = ({
   removeProductCardToMyBasket,
   addProductCardToMyFavorites,
   removeProductCardToMyFavorites,
-  createOrder
+  createOrder,
 }) => {
   const navigate = useNavigate();
 
@@ -46,14 +45,16 @@ const Basketpage = ({
     decrement: (item) => {
       let index = userBasket.indexOf(item);
       if (item.countProducts === 1) {
+        // eslint-disable-next-line
         item.countProducts = item.countProducts;
       } else {
+        // eslint-disable-next-line
         item.countProducts = item.countProducts - 1;
       }
       userBasket[index] = item;
 
       setUserbasket([...userBasket]);
-    }
+    },
   };
 
   useEffect(() => {
@@ -169,6 +170,7 @@ const Basketpage = ({
                   <button type="submit" className="btn my-1 start__order">
                     Оформить заказ{" "}
                     <img
+                      alt=""
                       src={NextArrow}
                       width={20}
                       style={{ margin: "0 0 0 10px " }}
@@ -194,11 +196,11 @@ Basketpage.propTypes = {
   addProductCardToMyFavorites: PropTypes.func.isRequired,
   removeProductCardToMyFavorites: PropTypes.func.isRequired,
   createOrder: PropTypes.func.isRequired,
-  userWork: PropTypes.object.isRequired
+  userWork: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  userWork: state.userWork
+  userWork: state.userWork,
 });
 
 export default connect(mapStateToProps, {
@@ -206,5 +208,5 @@ export default connect(mapStateToProps, {
   removeProductCardToMyBasket,
   addProductCardToMyFavorites,
   removeProductCardToMyFavorites,
-  createOrder
+  createOrder,
 })(Basketpage);

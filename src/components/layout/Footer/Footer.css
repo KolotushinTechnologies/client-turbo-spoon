@@ -73,7 +73,7 @@
         width: 100%;
         margin-right: auto;
         margin-left: auto;
-        align-items: end;
+        align-items: flex-end;
         justify-content: space-between;
     }
 }
@@ -82,7 +82,7 @@
     margin: 0px auto;
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: flex-end;
 }
 
 @media (max-width: 550px) {

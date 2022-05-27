@@ -3,7 +3,6 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 // Import Styles
-import ZmeiImage from "../../img/1.png";
 import XoImage from "../../img/хо.png";
 import PlusImage from "../../img/+.png";
 import Spinner from "../layout/Spinner";
@@ -18,7 +17,7 @@ const FavoritesProducts = ({
   removeProductCardToMyBasket,
   removeProductCardToMyFavorites,
   navigate,
-  loading
+  loading,
 }) => {
   return (
     <Fragment>
@@ -42,11 +41,16 @@ const FavoritesProducts = ({
                       >
                         {favoriteProduct?.product?.photo?.url ? (
                           <img
+                            alt=""
                             className="img__product"
                             src={favoriteProduct?.product?.photo?.url}
                           />
                         ) : (
-                          <img className="img__product" src={Balaklava} />
+                          <img
+                            alt=""
+                            className="img__product"
+                            src={Balaklava}
+                          />
                         )}
                       </Link>
                     </div>
@@ -76,6 +80,7 @@ const FavoritesProducts = ({
                           >
                             {" "}
                             <img
+                              alt=""
                               className="close__favorite"
                               src={XoImage}
                             />{" "}
@@ -92,6 +97,7 @@ const FavoritesProducts = ({
                           >
                             {" "}
                             <img
+                              alt=""
                               className="close__favorite"
                               src={XoImage}
                             />{" "}
@@ -111,7 +117,7 @@ const FavoritesProducts = ({
                               );
                             }}
                           >
-                            <img src={PlusImage} />
+                            <img alt="" src={PlusImage} />
                           </button>
                         ) : (
                           <button

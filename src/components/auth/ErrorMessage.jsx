@@ -7,12 +7,12 @@ const ErrorMessage = ({ error, message, style = {}, className = "" }) => {
       style={{
         left: error.ref?.offsetLeft + "px",
         width: error.ref?.offsetWidth + "px",
-        ...style
+        ...style,
       }}
     >
       {message ||
         error.message ||
-        (error.type == "pattern" && "Wrong pattern") ||
+        (error.type === "pattern" && "Wrong pattern") ||
         "Wrong"}
     </div>
   ) : null;

@@ -1,12 +1,11 @@
 import api from "../utils/api";
-import axios from "axios";
 import { setAlert } from "./alert";
 import {
   GET_ALL_PRODUCTS,
   GET_PRODUCT,
   UPDATE_PRODUCT,
   PRODUCT_ERROR,
-  CLEAR_PRODUCT
+  CLEAR_PRODUCT,
 } from "./types";
 
 // Get All Products
@@ -18,19 +17,19 @@ export const getAllProductCards = (categoryName) => async (dispatch) => {
 
   try {
     const res = await api.get("/product-cards/all", {
-      params: { category: categoryName }
+      params: { category: categoryName },
     });
     // const res = await axios.get("http://localhost:5000/api/product-cards/all");
     // console.log(res);
 
     dispatch({
       type: GET_ALL_PRODUCTS,
-      payload: res.data
+      payload: res.data,
     });
   } catch (err) {
     dispatch({
       type: PRODUCT_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
@@ -44,12 +43,12 @@ export const getProductCardById = (productCardId) => async (dispatch) => {
 
     dispatch({
       type: GET_PRODUCT,
-      payload: res.data
+      payload: res.data,
     });
   } catch (err) {
     dispatch({
       type: PRODUCT_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
@@ -67,7 +66,7 @@ export const createReviewForProductCard =
 
       dispatch({
         type: UPDATE_PRODUCT,
-        payload: res.data
+        payload: res.data,
       });
 
       dispatch(setAlert("Вы Успешно Оставили Отзыв На Товар!", "success"));
@@ -79,7 +78,7 @@ export const createReviewForProductCard =
       }
 
       dispatch({
-        type: PRODUCT_ERROR
+        type: PRODUCT_ERROR,
       });
     }
   };

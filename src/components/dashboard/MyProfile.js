@@ -1,6 +1,6 @@
 // Import Engine
-import React, { Fragment, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { Fragment, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
@@ -10,7 +10,7 @@ import {
   addProductCardToMyBasket,
   removeProductCardToMyBasket,
   addProductCardToMyFavorites,
-  removeProductCardToMyFavorites
+  removeProductCardToMyFavorites,
 } from "../../actions/users";
 
 // Import Components
@@ -29,20 +29,13 @@ const MyProfile = ({
   addProductCardToMyBasket,
   removeProductCardToMyBasket,
   addProductCardToMyFavorites,
-  removeProductCardToMyFavorites
+  removeProductCardToMyFavorites,
 }) => {
   const navigate = useNavigate();
-
-  const [modalActive, setModalActive] = useState(false);
-  const [loginStatus, setLoginStatus] = useState(false);
 
   useEffect(() => {
     getMyUserProfile();
   }, [getMyUserProfile]);
-
-  //   useEffect(() => {
-  //     getMyFavorites();
-  //   }, [getMyFavorites]);
 
   return (
     <Fragment>
@@ -107,12 +100,12 @@ MyProfile.propTypes = {
   addProductCardToMyFavorites: PropTypes.func.isRequired,
   removeProductCardToMyFavorites: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
-  userWork: PropTypes.object.isRequired
+  userWork: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   userWork: state.userWork,
-  productCard: state.productCard
+  productCard: state.productCard,
 });
 
 export default connect(mapStateToProps, {
@@ -122,5 +115,5 @@ export default connect(mapStateToProps, {
   addProductCardToMyBasket,
   removeProductCardToMyBasket,
   addProductCardToMyFavorites,
-  removeProductCardToMyFavorites
+  removeProductCardToMyFavorites,
 })(MyProfile);

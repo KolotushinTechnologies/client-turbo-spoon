@@ -17,7 +17,7 @@ const ProfileInfo = ({
   login,
   email,
   address,
-  phoneNumber
+  phoneNumber,
 }) => {
   return (
     <>
@@ -26,9 +26,9 @@ const ProfileInfo = ({
         <div className="editExitButtonsDiv">
           <button onClick={openProfileSettings} className="editButton">
             {displayEditProfile ? (
-              <img className="edit-page-button" src={EditPage} />
+              <img alt="" className="edit-page-button" src={EditPage} />
             ) : (
-              <img className="edit-page-button" src={EditPage} />
+              <img alt="" className="edit-page-button" src={EditPage} />
             )}
           </button>
         </div>
