@@ -4,10 +4,10 @@ import { LOGOUT } from "../actions/types";
 
 // Create an instance of axios
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: "https://vaselisk-app.herokuapp.com/api",
   headers: {
-    "Content-Type": "application/json"
-  }
+    "Content-Type": "application/json",
+  },
 });
 /*
   NOTE: intercept any error responses from the api
