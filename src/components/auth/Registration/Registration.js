@@ -94,7 +94,7 @@ const Registration = ({
         <input
           className="authFieldInput"
           type="text"
-          placeholder=""
+          placeholder="Номер Телефона"
           /* name="phoneNumber" */
           aria-invalid={!!errors.phoneNumber + ""}
           {...reghook("phoneNumber", {
@@ -144,7 +144,7 @@ const Registration = ({
                 maxLength: 320,
                 minLength: 1,
                 pattern:
-                  /.+/gi /* /^[a-z0-9\.\$\%\#\,\-\+\=\_\(\)\{\}\!\"\'\|\;\:\<\>]+@[a-z0-9]+\.[a-z0-9]+$/i */,
+                  /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i /* /^[a-z0-9\.\$\%\#\,\-\+\=\_\(\)\{\}\!\"\'\|\;\:\<\>]+@[a-z0-9]+\.[a-z0-9]+$/i */,
                 onChange: onChange,
               })}
               value={login}
@@ -163,7 +163,7 @@ const Registration = ({
                 required: "Обязательное поле",
                 maxLength: { value: 30, message: "Length more than 30" },
                 minLength: 1,
-                pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
+                pattern: /.+/gi,
                 onChange: onChange,
               })} /* TODO: Сделать поддержку других языков  */
               value={fullName}
@@ -269,7 +269,7 @@ const Registration = ({
                   message: "Максимальное количество символов: 100",
                 },
                 minLength: 1,
-                pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
+                pattern: /.+/gi,
                 onChange: onChange,
               })} /* TODO: Сделать поддержку других языков  */
               value={address}

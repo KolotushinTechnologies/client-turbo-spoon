@@ -1,6 +1,6 @@
 // Import Engine
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../../actions/users";
@@ -13,7 +13,6 @@ import Menu from "./Menu";
 import MainLogo from "../../../img/MainLogo.png";
 import FavoriteImage from "../../../img/FavoriteHeart.png";
 import BasketImage from "../../../img/Basket.png";
-// eslint-disable-next-line
 import "./Header.css";
 
 const Header = ({ userWork: { isAuthenticated, user }, logout }) => {
@@ -23,6 +22,8 @@ const Header = ({ userWork: { isAuthenticated, user }, logout }) => {
   const [loginStatus, setLoginStatus] = useState(false);
 
   const [pathname, pathnameSet] = useState("/");
+
+  useNavigate();
 
   useEffect(() => {
     pathnameSet(window.location.pathname);

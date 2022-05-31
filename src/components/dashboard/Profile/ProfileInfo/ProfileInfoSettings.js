@@ -175,13 +175,13 @@ const ProfileInfoSettings = ({
                 /* name="fullname" */
                 aria-invalid={!!errors.fullName + ""}
                 {...register("fullName", {
-                  required: "Empty field",
+                  required: "Обязательное поле",
                   maxLength: {
                     value: 30,
                     message: "Максимальное количество символов: 30",
                   },
                   minLength: 1,
-                  pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
+                  pattern: /.+/gi,
                   onChange: onChange,
                 })}
                 value={fullName}
@@ -212,7 +212,7 @@ const ProfileInfoSettings = ({
               /* name="fullname" */
               aria-invalid={!!errors.login + ""}
               {...register("login", {
-                required: "Empty field",
+                required: "Обязательное поле",
                 maxLength: {
                   value: 30,
                   message: "Максимальное количество символов: 30",
@@ -244,7 +244,7 @@ const ProfileInfoSettings = ({
                 placeholder="Ваш Email"
                 aria-invalid={!!errors.email + ""}
                 {...register("email", {
-                  required: "Empty field",
+                  required: "Обязательное поле",
                   maxLength: {
                     value: 320,
                     message: "Максимальное количество символов у Email: 320",
@@ -306,16 +306,16 @@ const ProfileInfoSettings = ({
                 placeholder="Ваш адрес"
                 aria-invalid={!!errors.address + ""}
                 {...register("address", {
-                  required: "Empty field",
+                  required: "Обязательное поле",
                   maxLength: {
-                    value: 12,
-                    message: "Количество символов должно быть 12",
+                    value: 100,
+                    message: "максимальное количество символов должно быть 100",
                   },
                   minLength: {
-                    value: 12,
-                    message: "Количество символов должно быть 12",
+                    value: 1,
+                    message: "Минимальное количество символов должно быть 1",
                   },
-                  pattern: /^[a-z0-9]+(|\s([a-z0-9]+)|-([a-z0-9]+))$/i,
+                  pattern: /.+/gi,
                   onChange: onChange,
                 })}
                 value={address}
